@@ -67,6 +67,7 @@ nav button.on{color:#ff9900}
 .ev.compact .ti{font-weight:500;font-size:14px}
 .ev.compact .pl{font-size:12px}
 .ev.compact .tg,.ev.compact .nt{display:none}
+.wsel{width:100%;padding:8px;border-radius:8px;background:#0f1420;color:var(--txt);border:1px solid var(--line);font-size:15px;margin-bottom:6px}.wrow{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid var(--line);font-size:14px}.wrow b{color:#ffb84d}
 .legend-d{margin-top:10px;color:var(--mut);font-size:12.5px}.legend-d summary{cursor:pointer;padding:4px 0}
 .lk{display:block;text-decoration:none;color:var(--txt)}.lk b{color:#8ab4ff}.lk small{display:block;color:#6b7aa0;font-size:11.5px;margin-top:3px;word-break:break-all}
 nav button{font-size:10.5px}
@@ -116,7 +117,7 @@ nav button{font-size:10.5px}
   <button data-v="links"><span>🔗</span>Links</button>
   <button data-v="info"><span>💡</span>Dicas</button>
 </nav>
-<script src="data.js?v=14"></script>
+<script src="data.js?v=15"></script>
 <script>
 (function(){
 const A=window.AGENDA, TZ=A.event.tz;
@@ -211,8 +212,11 @@ function renderDia(now){
 function renderInfo(){
   return `<div class="sec">Venues</div>${A.venues.map(v=>`<div class="card"><b><a style="color:#8ab4ff;text-decoration:none" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.n+" Las Vegas")}">📍 ${esc(v.n)} ↗</a></b><span>${esc(v.d)}</span></div>`).join("")}
   <div class="sec">Dicas rápidas</div>${A.tips.map(t=>`<div class="card">${esc(t)}</div>`).join("")}
+  <div class="sec">Tempo a pé entre hotéis</div><div class="card"><select id="wsel" class="wsel">${Object.keys(A.walk.from).map(k=>`<option ${k===wFrom?"selected":""}>${esc(k)}</option>`).join("")}</select>
+  ${Object.entries(A.walk.from[wFrom]).sort((a,b)=>a[1]-b[1]).map(([k,v])=>`<div class="wrow"><span>${esc(k)}</span><b>${v} min</b></div>`).join("")}<span>${esc(A.walk.note)}</span></div>
   <div class="sec">Fuso</div><div class="card">Las Vegas = Brasília −5h</div>`;
 }
+let wFrom=localStorage.getItem("ri26-walk")||"Venetian";
 const checks=JSON.parse(localStorage.getItem("ri26-talk")||"{}");
 function ckList(id,arr){return arr.map((t,n)=>{const k=id+n;return `<label class="ck ${checks[k]?"done":""}"><input type="checkbox" data-ck="${k}" ${checks[k]?"checked":""}><span>${esc(t)}</span></label>`}).join("")}
 function renderTalk(now){
@@ -261,7 +265,7 @@ document.addEventListener("click",e=>{
   if(e.target.id==="ckreset"){if(confirm("Limpar o checklist da palestra?")){for(const k in checks)delete checks[k];localStorage.setItem("ri26-talk","{}");render();}return;}
   const s=e.target.closest(".star"); if(s){const k=s.dataset.k;const cur=s.classList.contains("on");stars[k]=!cur;localStorage.setItem("ri26-stars",JSON.stringify(stars));render();}
 });
-document.addEventListener("change",e=>{if(e.target.dataset&&e.target.dataset.ck){checks[e.target.dataset.ck]=e.target.checked;localStorage.setItem("ri26-talk",JSON.stringify(checks));render();return;}if(e.target.id==="fp")hidePast=e.target.checked;render();});
+document.addEventListener("change",e=>{if(e.target.dataset&&e.target.dataset.ck){checks[e.target.dataset.ck]=e.target.checked;localStorage.setItem("ri26-talk",JSON.stringify(checks));render();return;}if(e.target.id==="wsel"){wFrom=e.target.value;localStorage.setItem("ri26-walk",wFrom);}if(e.target.id==="fp")hidePast=e.target.checked;render();});
 render(); setInterval(render,60000);
 if("serviceWorker" in navigator){
   const hadCtrl=!!navigator.serviceWorker.controller;
