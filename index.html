@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#232f3e">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>re:Invent 2026 · Minha agenda</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#0f1420;--card:#171e2e;--line:#242d42;--mut:#9aa5bd;--txt:#e8ecf3}
+body{margin:0;font:15px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(90deg,#232f3e,#3b2a63);padding:12px 16px calc(10px) ;padding-top:calc(12px + env(safe-area-inset-top))}
+header h1{margin:0;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#clock{font-size:12.5px;color:#c6cde0;margin-top:2px}
+.days{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:#131927;position:sticky;top:58px;z-index:4;scrollbar-width:none}
+.days button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:16px;padding:6px 12px;font-size:13px}
+.days button.on{background:#ff9900;color:#1b1200;border-color:#ff9900;font-weight:600}
+main{padding:10px 12px;max-width:760px;margin:0 auto}
+.sub{color:var(--mut);font-size:13px;margin:2px 0 10px}
+.ev{display:flex;gap:10px;background:var(--card);border-radius:10px;padding:10px;margin-bottom:8px;border-left:5px solid #555}
+.ev .tm{flex:none;width:58px;font-variant-numeric:tabular-nums;font-size:13px;color:var(--mut)}
+.ev .tm b{display:block;color:var(--txt);font-size:15px}
+.ev .bd{flex:1;min-width:0}
+.ev .ti{font-weight:600}
+.ev .pl{font-size:13px;color:var(--mut);margin-top:2px}
+.ev .pl a{color:#8ab4ff;text-decoration:none}
+.ev .nt{font-size:12.5px;margin-top:4px;color:#f2d38a}
+.ev .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:8px;margin-right:4px;background:#2a3550;color:#cbd5e0}
+.ev.now{outline:2px solid #ff9900;box-shadow:0 0 0 4px #ff990033}
+.ev.past{opacity:.45}
+.star{flex:none;background:none;border:0;font-size:20px;color:#55607a;padding:0 2px}
+.star.on{color:#ffcc33}
+.talk{border-color:#ff9900;background:#2b2210}.grant{border-color:#9b6bff}.sess{border-color:#3b82f6}.walk{border-color:#6b7aa0}
+.inv{border-color:#e05599}.off{border-color:#2fbf7f}.play{border-color:#ff4fa3}.fly{border-color:#a0aec0}.logi{border-color:#4a5568}.party{border-color:#c06bd6}.comm{border-color:#00c2b8;background:#10262a}.expo{border-color:#f5d90a;background:#26240f}
+.sec{margin:16px 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.filter{display:flex;gap:8px;margin:4px 0 10px;font-size:13px;color:var(--mut)}
+.filter label{display:flex;gap:4px;align-items:center}
+.card{background:var(--card);border-radius:10px;padding:12px;margin-bottom:8px}
+.card b{display:block}
+.card span{color:var(--mut);font-size:13px}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px}
+.legend i{font-style:normal;font-size:11.5px;padding:2px 8px;border-radius:8px;border-left:4px solid;background:var(--card)}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#131927;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:6}
+nav button{flex:1;background:none;border:0;color:var(--mut);padding:9px 0 8px;font-size:11.5px}
+nav button span{display:block;font-size:20px}
+nav button.on{color:#ff9900}
+.next{background:linear-gradient(90deg,#2b2210,#1d1830);border:1px solid #ff990055;border-radius:12px;padding:12px;margin-bottom:12px}
+.next small{color:#ffb84d;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.06em}
+.clocks{display:flex;gap:8px;margin:2px 0 12px}
+.clocks div{flex:1;background:var(--card);border-radius:12px;padding:10px 12px;border:1px solid var(--line)}
+.clocks .lv{border-color:#ff990088;background:linear-gradient(135deg,#2b2210,#171e2e)}
+.clocks small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.clocks b{display:block;font-size:34px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.clocks span{font-size:12px;color:var(--mut)}
+.empty{color:var(--mut);text-align:center;padding:20px}
+.tg{margin-top:4px}
+.seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:3px;margin:4px 0 8px}
+.seg button{flex:1;border:0;background:none;color:var(--mut);padding:8px;border-radius:8px;font-size:14px;font-weight:600}
+.seg button.on{background:#ff9900;color:#1b1200}
+.filter{justify-content:space-between}
+.ev.compact{padding:7px 10px;opacity:.78;background:#141a28}
+.ev.compact .ti{font-weight:500;font-size:14px}
+.ev.compact .pl{font-size:12px}
+.ev.compact .tg,.ev.compact .nt{display:none}
+.legend-d{margin-top:10px;color:var(--mut);font-size:12.5px}.legend-d summary{cursor:pointer;padding:4px 0}
+.lk{display:block;text-decoration:none;color:var(--txt)}.lk b{color:#8ab4ff}.lk small{display:block;color:#6b7aa0;font-size:11.5px;margin-top:3px;word-break:break-all}
+nav button{font-size:10.5px}
+#qrbtn{float:right;background:#ff9900;color:#1b1200;border:0;border-radius:10px;padding:7px 10px;font-weight:700;font-size:13px;margin-left:8px}
+#qr{position:fixed;inset:0;z-index:20;background:#0f1420f2;display:flex;align-items:center;justify-content:center;padding:16px}
+#qr[hidden]{display:none}
+.qrbox{background:#fff;color:#111;border-radius:16px;padding:16px;width:100%;max-width:380px;text-align:center}
+.qrtabs{display:flex;gap:6px;margin-bottom:12px}
+.qrtabs button{flex:1;border:2px solid #232f3e;background:#fff;color:#232f3e;border-radius:10px;padding:10px;font-weight:700;font-size:15px}
+.qrtabs button.on{background:#232f3e;color:#fff}
+#qrimg{width:100%;max-width:330px;aspect-ratio:1;image-rendering:pixelated;display:block;margin:0 auto}
+#qrlabel{font-size:16px;font-weight:600;margin-top:8px}
+.qrname{font-size:13px;color:#555;margin-top:2px}
+#qrclose{margin-top:14px;width:100%;border:0;background:#ff9900;color:#1b1200;border-radius:10px;padding:12px;font-weight:700;font-size:15px}
+.hero{background:linear-gradient(135deg,#3a2a08,#1d1830);border:1px solid #ff990066;border-radius:12px;padding:14px;margin-bottom:10px}
+.hero h2{margin:0 0 6px;font-size:18px}
+.hero div{font-size:13.5px;margin-top:4px}
+.hero a{color:#8ab4ff;text-decoration:none}
+.cd{display:inline-block;margin-top:8px;background:#ff9900;color:#1b1200;font-weight:700;border-radius:8px;padding:4px 10px;font-size:13px}
+.flow{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.flow b{flex:none;width:70px;color:#ffb84d;font-size:13px}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.ck input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:#ff9900}
+.ck.done span{text-decoration:line-through;color:var(--mut)}
+.card ol{margin:0;padding-left:20px}.card ol li{padding:4px 0}
+.card ul{margin:0;padding-left:18px}.card ul li{padding:3px 0}
+.reset{background:none;border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:4px 10px;font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+<header><button id="qrbtn" aria-label="Meus QR codes">📇 QR</button><h1>🗓 re:Invent 2026 · Las Vegas</h1><div id="clock"></div></header>
+<div id="qr" hidden>
+  <div class="qrbox">
+    <div class="qrtabs"><button data-q="li" class="on">LinkedIn</button><button data-q="site">kiko.dev.br</button></div>
+    <img id="qrimg" src="qr-linkedin.svg" alt="QR code do LinkedIn">
+    <div id="qrlabel">linkedin.com/in/felipekiko</div>
+    <div class="qrname">Felipe KiKo</div>
+    <button id="qrclose">Fechar</button>
+  </div>
+</div>
+<div class="days" id="days"></div>
+<main id="main"></main>
+<nav id="nav">
+  <button data-v="hoje" class="on"><span>📍</span>Agora</button>
+  <button data-v="dia"><span>📅</span>Agenda</button>
+  <button data-v="palestra"><span>🎤</span>Palestra</button>
+  <button data-v="links"><span>🔗</span>Links</button>
+  <button data-v="info"><span>💡</span>Dicas</button>
+</nav>
+<script src="data.js?v=13"></script>
+<script>
+(function(){
+const A=window.AGENDA, TZ=A.event.tz;
+const CAT={talk:"🎤 Palestra",grant:"💜 Grant",sess:"📚 Reservada",walk:"⭐ Walk-up",inv:"💌 Convite",comm:"🤝 Community",expo:"🧭 Expo",off:"😴 Day-off",play:"🎉 re:Play",fly:"✈ Voo",logi:"🚕 Logística",party:"🎉 Festa (opcional)"};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const stars=JSON.parse(localStorage.getItem("ri26-stars")||"{}");
+let view="hoje", sel=null, hidePast=false, mode=localStorage.getItem("ri26-mode")||"meu";
+
+function lvNow(){
+  const p=new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value;
+  return {date:`${g("year")}-${g("month")}-${g("day")}`, min:(+g("hour")%24)*60+ +g("minute"), hm:`${g("hour")%24}:${g("minute")}`.padStart(5,"0")};
+}
+const toMin=t=>{const[h,m]=t.split(":").map(Number);return h*60+m};
+const endMin=i=>{let e=toMin(i.e);return e<=toMin(i.s)?e+1440:e};
+const key=(d,i)=>d.date+"|"+i.s+"|"+i.t;
+function mapLink(p){
+  if(!p||/registro|e-mail|confirmar|Conferir|Hotel$/i.test(p))return esc(p);
+  return `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.split("·")[0]+" Las Vegas")}" target="_blank" rel="noopener noreferrer">${esc(p)} ↗</a>`;
+}
+function status(d,i,now){
+  if(d.date<now.date)return"past"; if(d.date>now.date)return"";
+  const s=toMin(i.s),e=endMin(i);
+  if(now.min>=e)return"past"; if(now.min>=s)return"now"; return"";
+}
+function card(d,i,now,compact){
+  const k=key(d,i), st=status(d,i,now), on=isOn(d,i);
+  const canStar=i.cat==="party"||i.cat==="walk"||i.cat==="inv";
+  return `<div class="ev ${i.cat} ${st} ${compact?"compact":""}">
+    <div class="tm"><b>${i.s}</b>${i.e}</div>
+    <div class="bd"><div class="ti">${esc(i.t)}</div>
+      <div class="pl">📍 ${mapLink(i.p)}</div>
+      ${i.note?`<div class="nt">⚠ ${esc(i.note)}</div>`:""}
+      <div class="tg"><span class="tag">${CAT[i.cat]}</span>${st==="now"?'<span class="tag" style="background:#ff9900;color:#1b1200">AGORA</span>':""}</div>
+    </div>
+    ${canStar?`<button class="star ${on?"on":""}" data-k="${esc(k)}" aria-label="Marcar">★</button>`:""}
+  </div>`;
+}
+function isOn(d,i){const k=key(d,i);return stars[k]!==undefined?stars[k]:!!i.star}
+function dayOf(date){return A.days.find(d=>d.date===date)}
+function defaultDay(now){
+  if(dayOf(now.date))return now.date;
+  return now.date<A.days[0].date?A.days[0].date:A.days[A.days.length-1].date;
+}
+function renderDays(){
+  $("#days").style.display=view==="dia"?"flex":"none";
+  $("#days").innerHTML=A.days.map(d=>`<button data-d="${d.date}" class="${d.date===sel?"on":""}">${d.label}</button>`).join("");
+}
+function clockHTML(){
+  const d=new Date();
+  const f=tz=>({t:d.toLocaleTimeString("pt-BR",{timeZone:tz,hour:"2-digit",minute:"2-digit"}),d:d.toLocaleDateString("pt-BR",{timeZone:tz,weekday:"short",day:"2-digit",month:"short"})});
+  const a=f(TZ),b=f("America/Sao_Paulo");
+  return `<div class="clocks"><div class="lv"><small>🎰 Las Vegas</small><b>${a.t}</b><span>${a.d}</span></div><div><small>🇧🇷 Campinas / SP</small><b>${b.t}</b><span>${b.d}</span></div></div>`;
+}
+function renderHoje(now){
+  const d=dayOf(now.date);
+  let h=clockHTML();
+  if(!d){
+    const diff=Math.ceil((new Date(A.event.start+"T00:00:00")-new Date(now.date+"T00:00:00"))/864e5);
+    h+= diff>0?`<div class="next"><small>Contagem</small><div class="ti" style="font-size:20px;font-weight:700">Faltam ${diff} dia(s) para o re:Invent</div><div class="sub">A tela "Agora" vai mostrar o que está acontecendo durante a viagem.</div></div>`
+             :`<div class="next"><small>Fim</small><div class="ti">re:Invent 2026 encerrado. Até a próxima! 👋</div></div>`;
+    const first=A.days[0]; h+=`<div class="sec">Primeiro dia · ${first.label}</div>`+first.items.filter(i=>i.cat!=="party").map(i=>card(first,i,now)).join("");
+    return h;
+  }
+  const core=d.items.filter(i=>i.cat!=="party"||isOn(d,i));
+  const cur=core.filter(i=>status(d,i,now)==="now");
+  const nxt=core.filter(i=>toMin(i.s)>now.min).sort((a,b)=>toMin(a.s)-toMin(b.s))[0];
+  h+=`<div class="sub">${d.label} · ${d.sub}</div>`;
+  if(cur.length)h+=`<div class="sec">Acontecendo agora</div>`+cur.map(i=>card(d,i,now)).join("");
+  if(nxt){const mins=toMin(nxt.s)-now.min;h+=`<div class="next"><small>Próximo · em ${mins>=60?Math.floor(mins/60)+"h"+String(mins%60).padStart(2,"0"):mins+" min"}</small>${card(d,nxt,now)}</div>`;}
+  const rest=core.filter(i=>toMin(i.s)>now.min&&i!==nxt);
+  if(rest.length)h+=`<div class="sec">Ainda hoje</div>`+rest.map(i=>card(d,i,now)).join("");
+  if(!cur.length&&!nxt)h+=`<div class="empty">Nada mais hoje. Descanse! 😴</div>`;
+  h+=`<div class="sub" style="margin-top:10px">Mostrando compromissos + festas marcadas com ★. Para escolher festas: aba 📅 Agenda → "+ Festas".</div>`;
+  return h;
+}
+function renderDia(now){
+  const d=dayOf(sel);
+  const nParty=d.items.filter(i=>i.cat==="party").length;
+  const nStar=d.items.filter(i=>i.cat==="party"&&isOn(d,i)).length;
+  let items=d.items.filter(i=>mode==="todas"||i.cat!=="party"||isOn(d,i));
+  if(hidePast)items=items.filter(i=>status(d,i,now)!=="past");
+  items=items.slice().sort((a,b)=>toMin(a.s)-toMin(b.s));
+  return `<div class="sub">${d.label} · ${d.sub}</div>
+  <div class="seg"><button data-m="meu" class="${mode==="meu"?"on":""}">Meu dia</button><button data-m="todas" class="${mode==="todas"?"on":""}">+ Festas (${nParty})</button></div>
+  <div class="filter"><label><input type="checkbox" id="fp" ${hidePast?"checked":""}> esconder encerradas</label><span>★ ${nStar} festa(s) escolhida(s)</span></div>
+  ${mode==="todas"?'<div class="sub">Toque em ★ para escolher as festas. As marcadas aparecem no "Meu dia" e na aba Agora.</div>':""}
+  ${items.length?items.map(i=>card(d,i,now,mode==="todas"&&i.cat==="party"&&!isOn(d,i))).join(""):'<div class="empty">Nada neste filtro.</div>'}
+  <details class="legend-d"><summary>Legenda</summary><div class="legend">${["talk","grant","comm","expo","sess","walk","inv","play","party","logi"].map(c=>`<i class="${c}">${CAT[c]}</i>`).join("")}</div></details>`;
+}
+function renderInfo(){
+  return `<div class="sec">Venues</div>${A.venues.map(v=>`<div class="card"><b><a style="color:#8ab4ff;text-decoration:none" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.n+" Las Vegas")}">📍 ${esc(v.n)} ↗</a></b><span>${esc(v.d)}</span></div>`).join("")}
+  <div class="sec">Dicas rápidas</div>${A.tips.map(t=>`<div class="card">${esc(t)}</div>`).join("")}
+  <div class="sec">Fuso</div><div class="card">Las Vegas = Brasília −5h</div>`;
+}
+const checks=JSON.parse(localStorage.getItem("ri26-talk")||"{}");
+function ckList(id,arr){return arr.map((t,n)=>{const k=id+n;return `<label class="ck ${checks[k]?"done":""}"><input type="checkbox" data-ck="${k}" ${checks[k]?"checked":""}><span>${esc(t)}</span></label>`}).join("")}
+function renderTalk(now){
+  const T=A.talk; const start=Date.UTC(2026,11,2,22,30); const diff=start-Date.now();
+  let cd="";
+  if(diff>0){const d=Math.floor(diff/864e5),hh=Math.floor(diff%864e5/36e5),mm=Math.floor(diff%36e5/6e4);cd=`⏱ Faltam ${d>0?d+"d ":""}${hh}h${String(mm).padStart(2,"0")}`}
+  else if(diff>-36e5)cd="🔴 AO VIVO AGORA"; else cd="✅ Palestra realizada";
+  return `<div class="hero"><h2>🎤 ${esc(T.title)}</h2>
+    <div>🗓 ${esc(T.when)}</div>
+    <div>📍 <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(T.mapQuery)}">${esc(T.where)} ↗</a></div>
+    <div>👥 ${esc(T.hosts)}</div><span class="cd">${cd}</span></div>
+  <div class="sec">Formato</div><div class="card"><ul>${T.format.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+  <div class="sec">Roteiro (45 min)</div><div class="card">${T.flow.map(f=>`<div class="flow"><b>${esc(f.t)}</b><span>${esc(f.d)}</span></div>`).join("")}</div>
+  <div class="sec">Perguntas para a conversa</div><div class="card"><ol>${T.questions.map(q=>`<li>${esc(q)}</li>`).join("")}</ol></div>
+  <div class="sec">Checklist · antes (no dia)</div><div class="card">${ckList("b",T.before)}</div>
+  <div class="sec">Checklist · durante</div><div class="card">${ckList("d",T.during)}</div>
+  <div class="sec">Checklist · depois</div><div class="card">${ckList("a",T.after)}<button class="reset" id="ckreset">Limpar checklist</button></div>
+  <div class="sec">Dicas de host</div><div class="card"><ul>${T.habits.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+  <div class="sec">Wi-Fi</div><div class="card"><b>Rede: ${esc(T.wifi.ssid)}</b><b>Senha: ${esc(T.wifi.pass)}</b><span>${esc(T.wifi.note)}</span></div>
+  <div class="sec">Emergência</div><div class="card">${esc(T.contact)}</div>
+  <div class="sec">Links</div>${T.links.map(l=>`<div class="card"><a style="color:#8ab4ff;text-decoration:none" target="_blank" rel="noopener noreferrer" href="${esc(l.u)}">🔗 ${esc(l.n)} ↗</a></div>`).join("")}`;
+}
+function renderLinks(){
+  if(!A.links)return `<div class="empty">Links ainda não carregaram. Feche e abra o app com internet.</div>`;
+  return A.links.map(g=>`<div class="sec">${esc(g.g)}</div>`+g.items.map(l=>`<a class="card lk" target="_blank" rel="noopener noreferrer" href="${esc(l.u)}"><b>🔗 ${esc(l.n)} ↗</b><span>${esc(l.d)}</span><small>${esc(l.u.replace(/^https?:\/\//,"").replace(/\/$/,""))}</small></a>`).join("")).join("")+
+  `<div class="sub" style="margin-top:10px">Links externos abrem em outra aba e precisam de internet.</div>`;
+}
+function render(){
+  const now=lvNow();
+  if(!sel)sel=defaultDay(now);
+  $("#clock").textContent=`Agora em Las Vegas: ${now.hm} · ${new Date().toLocaleDateString("pt-BR",{timeZone:TZ,weekday:"short",day:"2-digit",month:"short"})}`;
+  renderDays();
+  try{ $("#main").innerHTML=view==="hoje"?renderHoje(now):view==="dia"?renderDia(now):view==="palestra"?renderTalk(now):view==="links"?renderLinks():renderInfo(); }
+  catch(err){ $("#main").innerHTML=`<div class="empty">Esta aba não carregou (${esc(err.message)}).<br>Feche e abra o app com internet para atualizar.</div>`; }
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===view));
+}
+const QR={li:{src:"qr-linkedin.svg",label:"linkedin.com/in/felipekiko",alt:"QR code do LinkedIn"},site:{src:"qr-site.svg",label:"kiko.dev.br",alt:"QR code do site kiko.dev.br"}};
+function showQR(k){const q=QR[k];$("#qrimg").src=q.src;$("#qrimg").alt=q.alt;$("#qrlabel").textContent=q.label;document.querySelectorAll(".qrtabs button").forEach(b=>b.classList.toggle("on",b.dataset.q===k));}
+document.addEventListener("click",e=>{
+  if(e.target.id==="qrbtn"){$("#qr").hidden=false;return;}
+  if(e.target.id==="qrclose"||e.target.id==="qr"){$("#qr").hidden=true;return;}
+  const qb=e.target.closest(".qrtabs button"); if(qb){showQR(qb.dataset.q);return;}
+  const n=e.target.closest("nav button"); if(n){view=n.dataset.v;window.scrollTo(0,0);render();return;}
+  const d=e.target.closest(".days button"); if(d){sel=d.dataset.d;render();return;}
+  const m=e.target.closest(".seg button"); if(m){mode=m.dataset.m;localStorage.setItem("ri26-mode",mode);render();return;}
+  if(e.target.id==="ckreset"){if(confirm("Limpar o checklist da palestra?")){for(const k in checks)delete checks[k];localStorage.setItem("ri26-talk","{}");render();}return;}
+  const s=e.target.closest(".star"); if(s){const k=s.dataset.k;const cur=s.classList.contains("on");stars[k]=!cur;localStorage.setItem("ri26-stars",JSON.stringify(stars));render();}
+});
+document.addEventListener("change",e=>{if(e.target.dataset&&e.target.dataset.ck){checks[e.target.dataset.ck]=e.target.checked;localStorage.setItem("ri26-talk",JSON.stringify(checks));render();return;}if(e.target.id==="fp")hidePast=e.target.checked;render();});
+render(); setInterval(render,60000);
+if("serviceWorker" in navigator){
+  const hadCtrl=!!navigator.serviceWorker.controller;
+  navigator.serviceWorker.register("sw.js").then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{ if(hadCtrl && !window.__reloaded){ window.__reloaded=true; location.reload(); } });
+}
+})();
+</script>
+</body>
+</html>

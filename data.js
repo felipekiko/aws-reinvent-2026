@@ -1,0 +1,184 @@
+// Dados da agenda — AWS re:Invent 2026 (horários de Las Vegas, PST)
+// cat: talk | grant | sess | walk | inv | off | play | fly | logi | party
+// Sem dados pessoais, hotel, voos ou day-offs — seguro para hospedagem pública.
+window.AGENDA = {
+  event: { name: "AWS re:Invent 2026", start: "2026-11-30", end: "2026-12-04", tz: "America/Los_Angeles" },
+  days: [
+    { date: "2026-11-29", label: "Dom 29/Nov", sub: "Pré-evento", items: [
+      { s: "14:30", e: "19:00", cat: "party", t: "Kubernetes Automation Day", p: "Rockhouse, Venetian" },
+      { s: "18:00", e: "00:00", cat: "party", t: "HabileLabs Kickoff Night", p: "Endereço no registro" }
+    ]},
+    { date: "2026-11-30", label: "Seg 30/Nov", sub: "Dia 1", items: [
+      { s: "08:00", e: "14:00", cat: "party", t: "Stripe Breakfast / Day Party", p: "Mon Ami Gabi, Paris" },
+      { s: "08:00", e: "17:00", cat: "inv", t: "Community Builder Hangout", p: "The Stadium, Palazzo" },
+      { s: "10:00", e: "11:00", cat: "walk", t: "SEC302 Governance foundations for AI workloads", p: "Wynn/Encore" },
+      { s: "11:30", e: "13:00", cat: "comm", t: "OBRIGATÓRIO · Builder Community Hangout + LATAM Mixer Meetup", p: "The Stadium, Palazzo", note: "Sair ~12:15 para o ARC311-R (Wynn, 10–15 min a pé)" },
+      { s: "12:30", e: "14:30", cat: "sess", t: "ARC311-R When agents disagree: competing goals in cloud ops", p: "Wynn/Encore · Upper Convention Promenade · Cristal 3", note: "Workshop · levar laptop · pode chegar uns minutos atrasado vindo do Hangout" },
+      { s: "15:30", e: "17:30", cat: "sess", t: "ARC331 SaaS Agents Anywhere: distributed agentic deployments", p: "Wynn/Encore · Level 1 · Encore Ballroom 1", note: "Workshop · levar laptop" },
+      { s: "16:00", e: "18:00", cat: "expo", t: "🧭 Visitar a Expo (abertura)", p: "Venetian · Level 2 · Hall B", note: "Lembrete. A Expo abre às 16h, junto do ARC331: ir assim que sair do workshop (17:30). Fecha às 19h." },
+      { s: "16:00", e: "19:00", cat: "party", t: "Welcome Reception", p: "Expo Hall, Venetian", note: "Acesso com badge" },
+      { s: "17:30", e: "21:00", cat: "comm", t: "AWS Community Builders Mixer", p: "The Stadium, Palazzo", note: "Levar o badge. O Hangout fecha às 17h e todos saem; check-in do Mixer a partir das 17:30. Sem acompanhantes. Tem swag." },
+      { s: "19:00", e: "22:00", cat: "party", t: "Off Call: A Party for Humans (Clerk)", p: "Wynn Las Vegas" },
+      { s: "19:00", e: "01:00", cat: "party", t: "House of Kube", p: "INDUSTRIAL event space, 2330 S Industrial Rd", note: "Fora da Strip: ir de Uber" },
+      { s: "20:00", e: "22:00", cat: "party", t: "Redis Welcome Party", p: "Cañonita, Venetian Shoppes" },
+      { s: "20:00", e: "23:00", cat: "party", t: "Harness After-Hours Party", p: "Flight Club, Venetian" }
+    ]},
+    { date: "2026-12-01", label: "Ter 1/Dez", sub: "Dia 2", items: [
+      { s: "08:00", e: "17:00", cat: "inv", t: "Community Builder Hangout", p: "The Stadium, Palazzo" },
+      { s: "06:00", e: "07:30", cat: "party", t: "Intuitive 5k Run 🏅", p: "The Venetian Las Vegas" },
+      { s: "08:00", e: "10:30", cat: "comm", t: "CEO Keynote · assistir no Builder Community Hangout", p: "The Stadium, Palazzo", note: "Ou no auditório (KEY002, 8:30, Venetian). Depois da keynote: Builder Minifig Bar no Hangout" },
+      { s: "11:30", e: "12:30", cat: "walk", t: "SVS336 Building production AI agents on AWS", p: "Caesars Forum" },
+      { s: "13:30", e: "14:30", cat: "walk", t: "DVT320 How Kiro learns", p: "Caesars Forum" },
+      { s: "15:00", e: "15:15", cat: "party", t: "Más allá de los Techos de Cristal (só o começo)", p: "Wynn Golf Club", note: "Sair 15:15 para o IND363 no Caesars Forum" },
+      { s: "15:30", e: "17:30", cat: "sess", t: "IND363 Defeat Player Evasion: AI Moderation at Scale", p: "Caesars Forum · Level 1 · Forum 101", note: "Workshop · levar laptop" },
+      { s: "17:00", e: "19:00", cat: "party", t: "Executive Cocktail Hour - Holiday Edition", p: "North Show Terrace, Wynn", star: true },
+      { s: "18:00", e: "20:00", cat: "party", t: "A Heroes' Welcome: CodeRabbit Reception", p: "Cañonita, Venetian Shoppes" },
+      { s: "18:00", e: "20:00", cat: "party", t: "Shift into Happy Hour (Thoughtworks)", p: "Opium Room, TAO, Venetian" },
+      { s: "18:00", e: "20:00", cat: "party", t: "New Relic Customer & Partner Appreciation", p: "Vista Cocktail Lounge, Caesars Palace" },
+      { s: "18:00", e: "21:00", cat: "party", t: "FinOps After Dark (Finout)", p: "Rockhouse, Venetian", star: true },
+      { s: "18:00", e: "21:00", cat: "party", t: "Deepgram Speak Easy", p: "Allē Lounge on 66, Resorts World" },
+      { s: "18:00", e: "22:00", cat: "party", t: "House of Valkey", p: "HaSalon, Palazzo" },
+      { s: "18:30", e: "21:30", cat: "party", t: "Spacelift + Topgolf", p: "Topgolf, 4627 Koval Ln" },
+      { s: "19:00", e: "22:00", cat: "inv", t: "LATAM Reception (convite AWS)", p: "XS, Wynn", star: true },
+      { s: "19:00", e: "22:00", cat: "party", t: "Agents After Dark (Vercel, Anthropic, Notion)", p: "CUT by Wolfgang Puck, Venetian" },
+      { s: "19:00", e: "23:00", cat: "party", t: "AI Trivia Night", p: "Smelly Cat Karaoke Bar, Horseshoe" },
+      { s: "20:00", e: "00:00", cat: "party", t: "Attribute & DoiT à Paris", p: "Chéri Rooftop, Paris" },
+      { s: "20:45", e: "23:45", cat: "party", t: "Flight Club with PlanetScale, Laravel & Sentry", p: "Flight Club, Palazzo", note: "No Luma aparece Pending — conferir" },
+      { s: "21:00", e: "23:00", cat: "party", t: "re:Target Happy Hour (Act)", p: "Flight Club, Palazzo" }
+    ]},
+    { date: "2026-12-02", label: "Qua 2/Dez", sub: "Palestra + grant", items: [
+      { s: "07:00", e: "10:00", cat: "party", t: "CISO Games GYM", p: "The Strip Barbell, 4335 Dean Martin Dr Suite 410" },
+      { s: "08:00", e: "14:00", cat: "party", t: "GitHub Social Club", p: "El Segundo Sol, Fashion Show" },
+      { s: "08:00", e: "14:00", cat: "inv", t: "Community Builder Hangout", p: "The Stadium, Palazzo" },
+      { s: "10:00", e: "11:00", cat: "walk", t: "OPN305 Agents need names too", p: "MGM Grand" },
+      { s: "12:30", e: "12:50", cat: "walk", t: "COM340 Lambda MicroVMs", p: "Wynn/Encore" },
+      { s: "14:00", e: "14:30", cat: "logi", t: "Chegar no Builder Loft e preparar o quadro", p: "Caesars Forum · Level 1" },
+      { s: "14:30", e: "15:30", cat: "talk", t: "🎤 MINHA PALESTRA — Building and Deploying PacMon with Kiro on AWS!", p: "AWS Builder Loft · Content Hub · Level 1 · Booth #118-125 · Caesars Forum", note: "Conversa aberta, até 50 pessoas · só quadro branco (sem projetor e sem microfone)" },
+      { s: "15:45", e: "17:30", cat: "grant", t: "💜 UG Meeting (grant, foto com grantees)", p: "Local a confirmar", note: "Oficial 15:00–17:30 · chegar ~15:45, depois da palestra" },
+      { s: "17:30", e: "21:00", cat: "grant", t: "💜 UG Mixer", p: "The Stadium, Palazzo" },
+      { s: "21:00", e: "22:30", cat: "party", t: "Do Not Disturb Activated", p: "TAO Nightclub, Venetian", star: true },
+      { s: "21:00", e: "22:30", cat: "party", t: "NeuBird After Hours", p: "TAO Nightclub, Venetian" },
+      { s: "21:00", e: "22:00", cat: "party", t: "Agents After Dark Masquerade (1Password)", p: "Grand Lux Café, Venetian" },
+      { s: "21:00", e: "23:30", cat: "party", t: "Afterparty / Below Deck (Eon)", p: "Juliet Cocktail Room, Venetian", star: true },
+      { s: "21:00", e: "00:00", cat: "party", t: "Agent Afters", p: "Superfrico, Cosmopolitan" },
+      { s: "21:00", e: "01:00", cat: "party", t: "Mission Cloud Ignite'26 (Nelly)", p: "OMNIA, Caesars Palace" },
+      { s: "21:00", e: "22:00", cat: "party", t: "Cloudflare After Dark", p: "Brooklyn Bowl, 3545 S Las Vegas Blvd" },
+      { s: "21:00", e: "00:00", cat: "party", t: "Duckbill / Last Week in AWS", p: "Atomic Liquors, 917 E Fremont St", note: "Longe: Uber ~20 min" }
+    ]},
+    { date: "2026-12-03", label: "Qui 3/Dez", sub: "Dia 4", items: [
+      { s: "10:00", e: "12:00", cat: "expo", t: "🧭 Visitar a Expo (último dia)", p: "Venetian · Level 2 · Hall B", note: "Lembrete. Último dia da Expo: 10h–16h" },
+      { s: "10:00", e: "15:00", cat: "inv", t: "Community Builder Hangout", p: "The Stadium, Palazzo", note: "Na quinta fecha às 15h" },
+      { s: "15:00", e: "16:00", cat: "walk", t: "AIM369 Workflow agents on AgentCore", p: "MGM Grand" },
+      { s: "16:00", e: "17:00", cat: "walk", t: "SVS348 Serverless compute built for the web", p: "MGM Grand" },
+      { s: "16:00", e: "17:30", cat: "party", t: "pre:Play Happy Hour (Elastic & AWS)", p: "CUT by Wolfgang Puck, Venetian" },
+      { s: "17:00", e: "20:00", cat: "party", t: "CISO Strategy Salon (Exaforce)", p: "CarverSteak, Resorts World" },
+      { s: "19:30", e: "00:00", cat: "play", t: "🎉 re:Play Party", p: "Las Vegas Festival Grounds", note: "Shuttles a partir das 19:00 · acesso com badge" },
+    ]},
+    { date: "2026-12-04", label: "Sex 4/Dez", sub: "Último dia", items: [
+      { s: "08:30", e: "09:30", cat: "walk", t: "COM320 Lights, Camera, Fargate", p: "Venetian" },
+    ]}
+  ],
+  talk: {
+    title: "Building and Deploying PacMon with Kiro on AWS!",
+    when: "Quarta, 2/Dez · 14:30–15:30 PT (planejar 45 min)",
+    where: "AWS Builder Loft · Content Hub · Level 1 · Booth #118-125 · Caesars Forum",
+    mapQuery: "Caesars Forum Las Vegas",
+    hosts: "Felipe KiKo & Flávio Pimenta · AWS User Group Campinas",
+    format: [
+      "Conversa, não apresentação: sem slides formais, sem projetor e sem microfone",
+      "Até 50 pessoas · ~5 mesas redondas + poltronas + lugar em pé",
+      "Quadro branco grande com marcadores · welcome desk, ambassadors e scanner de sessão",
+      "Em português (pt-BR), com legendas automáticas em inglês (compromisso público no resumo)",
+      "Nível 200 · AI, Architecture · Games"
+    ],
+    flow: [
+      { t: "0–5 min", d: "Boas-vindas: hosts + rodada rápida de nomes e o que trouxe cada um" },
+      { t: "5–12 min", d: "Primer (até 10 min): o PacMon hoje e o plano para multiplayer com Kiro + AWS. Esboço no quadro" },
+      { t: "12–38 min", d: "Discussão aberta: usar as perguntas, deixar a sala conduzir, chamar as vozes mais quietas" },
+      { t: "38–45 min", d: "Encerramento: registrar os pontos no quadro, conectar pessoas, pedir a pesquisa no app" }
+    ],
+    questions: [
+      "Qual feature o PacMon deveria ganhar a seguir e como você a construiria?",
+      "Como você desenharia um multiplayer em tempo real na AWS?",
+      "Onde o Kiro ou o desenvolvimento assistido por IA ajudou ou atrapalhou?",
+      "Como levar um protótipo para a nuvem rápido e com segurança?",
+      "Quais serviços AWS usar para matchmaking e estado do jogo?",
+      "O que as comunidades AWS brasileiras estão construindo que os outros deveriam conhecer?"
+    ],
+    habits: [
+      "Chegar 15 min antes e fazer check-in com o ambassador",
+      "Primer com menos de 10 min: diagrama ou demo rápida, depois 3 a 5 perguntas",
+      "Aprofundar em trade-offs, modos de falha, custo e o que fariam diferente",
+      "Conectar pessoas com problemas parecidos"
+    ],
+    before: [
+      "Reconferir o Wi-Fi e testar o jogo e a AWS pelo celular",
+      "Carregar laptop, celular, power bank e carregadores",
+      "Revisar o ambiente AWS: no ar, sem erro e dentro do orçamento",
+      "Ter no celular (ou impresso): diagrama, perguntas e QR codes",
+      "14:15 · chegar ao Builder Loft e fazer check-in com o ambassador",
+      "Conhecer o espaço: quadro, marcadores, mesas, onde ficar para falar alto",
+      "Montar o livestream (se autorizado) e testar o áudio",
+      "Ligar as legendas automáticas em inglês e testar",
+      "Escrever no quadro o título e as perguntas iniciais"
+    ],
+    during: [
+      "Selfie com a plateia no início (postar no Slack dos meetups)",
+      "Falar em português e em voz alta (não há microfone)",
+      "Primer de até 10 min: problema, arquitetura, demo curta",
+      "Convidar a plateia a entrar no jogo pelo QR code",
+      "Anotar sugestões no quadro e conectar pessoas",
+      "Pedir que todos respondam a pesquisa da sessão no app AWS Events",
+      "Encerrar no horário, com agradecimentos",
+      "Alguém tira fotos (plateia, quadro, brindes)"
+    ],
+    after: [
+      "Responder a pesquisa da sessão no app (hosts também)",
+      "Fotografar o quadro branco e salvar os contatos",
+      "Postar selfie e fotos no Slack dos meetups e nas redes (#AWSreinvent)",
+      "Confirmar que o livestream foi gravado",
+      "Correr para o UG Meeting (chegar ~15:45)"
+    ],
+    wifi: { ssid: "@re:Invent26", pass: "@re:Invent26", note: "Slide marcado como \"NOT FINAL\": conferir nas placas do local. Cabo só com registro de MAC na equipe de rede da AWS." },
+    contact: "Atraso, cancelamento ou problema: Slack dos hosts @halpaxto ou @coreydst. Telefone no e-mail do Paxton (20/11).",
+    links: [
+      { n: "Jogar o PacMon", u: "https://flap.github.io/pacmon/" },
+      { n: "Artigo do Flávio no Builder Center", u: "https://builder.aws.com/content/3L6GM0fw2bmV1kW96Rtwftw4z95/from-spec-to-production-with-ai-building-pacmon-in-vue-3-live-with-kiro" },
+      { n: "Know Before You Go (Community Builders)", u: "https://d24exsrkda6dvw.cloudfront.net" }
+    ]
+  },
+  links: [
+    { g: "Planejamento", items: [
+      { n: "re:Invent Planning (guia do Pimenta)", d: "Guia de planejamento da viagem e do evento", u: "https://flap.github.io/reInventPlanning/" },
+      { n: "Know Before You Go · Community Builders", d: "Hangout, CB Mixer, meetups, badge e como chegar ao Stadium", u: "https://d24exsrkda6dvw.cloudfront.net/" }
+    ]},
+    { g: "Swag e caça ao tesouro", items: [
+      { n: "Swag Quest", d: "Mapa da Expo + catálogo de brindes por estande, informado pelos participantes", u: "https://swagquest.com/" },
+      { n: "SWAG HUNTERS", d: "Swag e concursos antes que acabem", u: "https://swag.carlicode.com/#/descubrir" },
+      { n: "RE:INVENT HUNT '26 (VidQE)", d: "Caça ao vivo de swag, sessões, festas e prêmios", u: "https://vidqe.secada.in/reinvent/index.html" }
+    ]}
+  ],
+  venues: [
+    { n: "The Venetian / Palazzo", d: "Keynotes, Expo (Level 2, Hall B), UG Mixer" },
+    { n: "The Stadium (Palazzo)", d: "Builder Community Hangout e CB Mixer. Um nível abaixo do lobby do Palazzo, embaixo do WAKUDA e ao lado do Bazaar Meat (mesma sala do \"Brackets at The Stadium\"). Todas as rotas terminam no mesmo elevador/escada que desce um nível." },
+    { n: "Caesars Forum", d: "IND363 · Builder Loft (palestra)" },
+    { n: "Wynn / Encore", d: "ARC311-R · ARC331 · LATAM Reception (XS)" },
+    { n: "MGM Grand", d: "Algumas sessões walk-up" },
+    { n: "Caesars Palace", d: "Breakouts e festas" },
+    { n: "Las Vegas Festival Grounds", d: "re:Play (shuttles)" }
+  ],
+  tips: [
+    "🍳 Builder Community Hangout (seg–qua 8h–17h, qui 8h–15h): café da manhã, almoço, lanches e espresso todos os dias. Entrada com badge + pré-registro, só maiores de 21, sem acompanhantes.",
+    "🪪 Retirada do badge: aeroporto LAS dom e seg das 7h à meia-noite; hotéis dom 10h–20h e seg a qui 6h30–20h. Levar passaporte.",
+    "🚇 Monorail gratuito com o badge: mais rápido que os shuttles na Strip.",
+    "🚌 Shuttles AWS ligam os venues. Entre Venetian e Wynn dá para ir a pé.",
+    "💻 Workshops (ARC311-R, ARC331, IND363): levar laptop carregado.",
+    "🔋 Power bank sempre na mochila.",
+    "💧 Umidade de 10–20%: beber muita água, usar hidratante labial e soro nasal.",
+    "🧥 Dias de 14–18°C, noites de 2–6°C, salas geladas: vestir em camadas.",
+    "⭐ Sessões walk-up: chegar 15–20 min antes. Reservadas esgotadas: fila de stand-by.",
+    "🎤 Palestra: conversa no quadro branco, sem slides. Levar perguntas para puxar a discussão.",
+    "💵 Sales tax de Nevada: 8,375% sobre o preço.",
+    "🚑 Emergência médica: ligar para a central do seguro ANTES do atendimento (EUA 1-844-229-4864 · +1 305-590-8016)."
+  ]
+};
