@@ -20,8 +20,7 @@ window.AGENDA = {
       { s: "17:30", e: "21:00", cat: "comm", t: "AWS Community Builders Mixer", p: "The Stadium, Palazzo", note: "Levar o badge. O Hangout fecha às 17h e todos saem; check-in do Mixer a partir das 17:30. Sem acompanhantes. Tem swag." },
       { s: "19:00", e: "22:00", cat: "party", t: "Off Call: A Party for Humans (Clerk)", p: "Wynn Las Vegas" },
       { s: "19:00", e: "01:00", cat: "party", t: "House of Kube", p: "INDUSTRIAL event space, 2330 S Industrial Rd", note: "Fora da Strip: ir de Uber" },
-      { s: "20:00", e: "22:00", cat: "party", t: "Redis Welcome Party", p: "Cañonita, Venetian Shoppes" },
-      { s: "20:00", e: "23:00", cat: "party", t: "Harness After-Hours Party", p: "Flight Club, Venetian" }
+      { s: "20:00", e: "22:00", cat: "party", t: "Redis Welcome Party", p: "Cañonita, Venetian Shoppes" }
     ]},
     { date: "2026-12-01", label: "Ter 1/Dez", sub: "Dia 2", items: [
       { s: "08:00", e: "17:00", cat: "inv", t: "Community Builder Hangout", p: "The Stadium, Palazzo" },
@@ -29,7 +28,7 @@ window.AGENDA = {
       { s: "08:00", e: "10:30", cat: "comm", t: "CEO Keynote · assistir no Builder Community Hangout", p: "The Stadium, Palazzo", note: "Ou no auditório (KEY002, 8:30, Venetian). Depois da keynote: Builder Minifig Bar no Hangout" },
       { s: "11:30", e: "12:30", cat: "walk", t: "SVS336 Building production AI agents on AWS", p: "Caesars Forum" },
       { s: "13:30", e: "14:30", cat: "walk", t: "DVT320 How Kiro learns", p: "Caesars Forum" },
-      { s: "15:00", e: "15:15", cat: "party", t: "Más allá de los Techos de Cristal (só o começo)", p: "Wynn Golf Club", note: "Sair 15:15 para o IND363 no Caesars Forum" },
+      { s: "15:00", e: "17:00", cat: "party", t: "Más allá de los Techos de Cristal", p: "Wynn Golf Club", note: "Bate com o IND363 (15:30): dá só para passar no começo e sair 15:15" },
       { s: "15:30", e: "17:30", cat: "sess", t: "IND363 Defeat Player Evasion: AI Moderation at Scale", p: "Caesars Forum · Level 1 · Forum 101", note: "Workshop · levar laptop" },
       { s: "17:00", e: "19:00", cat: "party", t: "Executive Cocktail Hour - Holiday Edition", p: "North Show Terrace, Wynn", star: true },
       { s: "18:00", e: "20:00", cat: "party", t: "A Heroes' Welcome: CodeRabbit Reception", p: "Cañonita, Venetian Shoppes" },
