@@ -1,6 +1,6 @@
 // Cache para uso offline. Ao atualizar a agenda, troque a versão (e o ?v= do data.js no index.html).
-const CACHE = "ri26-v15";
-const FILES = ["./", "index.html", "data.js?v=15", "manifest.webmanifest", "icon.svg", "qr-linkedin.svg", "qr-site.svg"];
+const CACHE = "ri26-v16";
+const FILES = ["./", "index.html", "data.js?v=16", "manifest.webmanifest", "icon.svg", "qr-linkedin.svg", "qr-site.svg"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES.map(f => new Request(f, { cache: "reload" })))));
