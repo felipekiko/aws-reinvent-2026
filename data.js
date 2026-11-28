@@ -27,6 +27,7 @@ window.AGENDA = {
     { date: "2026-12-01", label: "Ter 1/Dez", sub: "Dia 2", items: [
       { s: "08:00", e: "17:00", cat: "inv", t: "Community Builder Hangout", p: "The Stadium, Palazzo" },
       { s: "06:00", e: "07:30", cat: "party", t: "Intuitive 5k Run 🏅", p: "The Venetian Las Vegas" },
+      { s: "08:30", e: "13:30", cat: "party", t: "Touch Grass: Vercel's Wellness Lounge", p: "CUT by Wolfgang Puck, Venetian", note: "Opcional. Sobrepõe a keynote e o Hangout de manhã" },
       { s: "08:00", e: "10:30", cat: "comm", t: "CEO Keynote · assistir no Builder Community Hangout", p: "The Stadium, Palazzo", note: "Ou no auditório (KEY002, 8:30, Venetian). Depois da keynote: Builder Minifig Bar no Hangout" },
       { s: "11:30", e: "12:30", cat: "walk", t: "SVS336 Building production AI agents on AWS", p: "Caesars Forum" },
       { s: "13:30", e: "14:30", cat: "walk", t: "DVT320 How Kiro learns", p: "Caesars Forum" },
